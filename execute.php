@@ -10,8 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Memeriksa apakah id_soal ada
     if ($id_soal) {
         // Query untuk mengambil data dari tabel soal
-        $sql_soal = "SELECT test_code, function_name, id_ujian 
-                     FROM soal 
+        $sql_soal = "SELECT test_code, function_name, id_ujian
+                     FROM soal
                      WHERE status = 'aktif' AND id_soal = ?";
 
         // Menyiapkan statement
@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Membuat file dan menulis isi kode ke dalamnya
     file_put_contents($code_path, $user_code);
-    
+
     // Mencari secret testcase
     $query_s_testcase = mysqli_query($koneksi, "SELECT * FROM s_testcase where id_soal='$id_soal'");
     $data_s_testcase = mysqli_fetch_assoc($query_s_testcase);
